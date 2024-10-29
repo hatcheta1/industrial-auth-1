@@ -15,6 +15,7 @@ class PhotosController < ApplicationController
   # GET /photos/new
   def new
     @photo = Photo.new
+    authorize @photo
   end
 
   # GET /photos/1/edit
@@ -30,6 +31,7 @@ class PhotosController < ApplicationController
       if @photo.save
         format.html { redirect_to @photo, notice: "Photo was successfully created." }
         format.json { render :show, status: :created, location: @photo }
+        authorize @photo
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
