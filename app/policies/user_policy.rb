@@ -23,12 +23,4 @@ class UserPolicy < ApplicationPolicy
   def discover?
     user == current_user
   end
-
-  def followers?
-    true
-  end
-
-  def following?
-    true
-  end
 end

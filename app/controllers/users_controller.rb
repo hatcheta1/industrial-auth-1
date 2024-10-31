@@ -14,12 +14,6 @@ class UsersController < ApplicationController
   def discover
   end
 
-  def followers
-  end
-
-  def following
-  end
-
   private
 
     def set_user
