@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-  before_action :authorize_comment, except: [:index, :new, :create]
+  before_action :authorize_comment, except: [:new, :create]
   after_action :authorize_comment, only: [:new, :create]
 
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
-    authorize @comments
   end
 
   # GET /comments/1 or /comments/1.json
@@ -72,6 +71,6 @@ class CommentsController < ApplicationController
     end
 
     def authorize_comment
-      authorize @comment
+      authorize(@comment || Comment)
     end
 end
